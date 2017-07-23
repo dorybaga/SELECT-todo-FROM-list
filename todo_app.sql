@@ -17,16 +17,8 @@ CREATE TABLE tasks (
 
 );
 
-\d tasks
-
 ALTER TABLE tasks DROP COLUMN completed;
-
-SELECT * FROM tasks;
-
 ALTER TABLE tasks ADD COLUMN completed_at TIMESTAMP DEFAULT NULL;
-
-SELECT * FROM tasks;
-
 ALTER TABLE tasks ALTER COLUMN updated_at SET NOT NULL;
 ALTER TABLE tasks ALTER COLUMN updated_at SET DEFAULT NOW();
 
@@ -35,26 +27,22 @@ ALTER TABLE tasks ALTER COLUMN updated_at SET DEFAULT NOW();
 INSERT INTO tasks VALUES
 (DEFAULT, 'Study SQL', 'Complete this exercise', now(), now(), NULL);
 
-SELECT * FROM tasks;
-
 INSERT INTO tasks (title, description) VALUES ('Study PostgreSQL', 'Read all the docs');
-
-SELECT * FROM tasks;
 
 SELECT title FROM tasks WHERE completed_at IS NULL;
 UPDATE tasks SET completed_at = now() WHERE title = 'Study SQL';
-
-SELECT * FROM tasks;
 
 SELECT title, description FROM tasks WHERE completed_at IS NULL;
 SELECT * FROM tasks ORDER BY created_at DESC;
 
 INSERT INTO tasks (title, description) VALUES ('mistake 1', 'a test entry');
-INSERT INTO tasks (title, description) VALUES ('mistake 2', 'a test entry');
-INSERT INTO tasks (title, description) VALUES ('mistake 3', 'a test entry');
+INSERT INTO tasks (title, description) VALUES ('mistake 2', 'another test entry');
+INSERT INTO tasks (title, description) VALUES ('mistake 3', 'another test entry');
+
+SELECT title FROM tasks WHERE title = 'mistake 1';
+DELETE FROM tasks WHERE title = 'mistake 1';
+
+
 
 SELECT * FROM tasks;
-
-
-
 \c dorybaga
