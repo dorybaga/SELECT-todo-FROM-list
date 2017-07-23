@@ -43,7 +43,7 @@ SELECT title FROM tasks WHERE title = 'mistake 1';
 DELETE FROM tasks WHERE title = 'mistake 1';
 
 SELECT title, description FROM tasks WHERE title LIKE '%mistake%';
-
+DELETE FROM tasks WHERE title LIKE '%mistake%';
 
 SELECT * FROM tasks;
 \c dorybaga
