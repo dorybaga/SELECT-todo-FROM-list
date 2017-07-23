@@ -30,7 +30,18 @@ SELECT * FROM tasks;
 ALTER TABLE tasks ALTER COLUMN updated_at SET NOT NULL;
 ALTER TABLE tasks ALTER COLUMN updated_at SET DEFAULT NOW();
 
-
 \d tasks
+
+INSERT INTO tasks VALUES
+(DEFAULT, 'Study SQL', 'Complete this exercise', now(), now(), NULL);
+
+SELECT * FROM tasks;
+
+INSERT INTO tasks (title, description) VALUES ('Study PostgreSQL', 'Read all the docs');
+
+SELECT * FROM tasks;
+
+SELECT title FROM tasks WHERE completed_at IS NULL;
+
 
 \c dorybaga
